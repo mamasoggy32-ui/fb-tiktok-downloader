@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04   # ប្តូរទៅ 22.04 ដើម្បីមាន libtinfo5
     steps:
       - uses: actions/checkout@v4
 
@@ -33,11 +33,10 @@ jobs:
           wget https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip
           unzip commandlinetools-linux-11076708_latest.zip
           mv cmdline-tools latest
-          mkdir tools
+          mkdir -p tools
           mv latest tools/
-          echo 'export ANDROID_HOME=\~/android' >> \~/.bashrc
-          echo 'export PATH=$PATH:$ANDROID_HOME/cmdline-tools/tools/bin' >> \~/.bashrc
-          source \~/.bashrc
+          export ANDROID_HOME=\~/android
+          export PATH=$PATH:$ANDROID_HOME/cmdline-tools/tools/bin
           yes | sdkmanager --licenses
           sdkmanager "platform-tools" "platforms;android-34" "build-tools;34.0.0"
 
