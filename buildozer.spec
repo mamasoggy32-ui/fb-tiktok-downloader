@@ -6,7 +6,8 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-22.04   # ប្តូរទៅ 22.04 ដើម្បីមាន libtinfo5
+    runs-on: ubuntu-22.04
+
     steps:
       - uses: actions/checkout@v4
 
